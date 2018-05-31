@@ -11,18 +11,24 @@ using namespace std;
 // DECLARE FUNCTIONS
 // ===================================
 
-vector<double> gaussianSample2D();								// draw sample from 2D gaussian 
-
 double energyClassical(vector<double> vec);
 double energyQuantum(double n);
+double energyArbitrary(double n);
+double energyQuantum2D(double n1, double n2);
+
 vector<double> returnClassicalDist(double T);
 vector<double> returnQuantumDist(double T);
+vector<double> returnArbitraryDist(double T);
+vector<double> returnQuantum2DDist(double T);
+
 vector<double> estimateError(vector<double> vec);
 vector<double> removeAutocorrelation(vector<double> vec);
 vector<double> expected(string dist_type);
 
 // From utils.cpp
+vector<double> gaussianSample2D();								// draw sample from 2D gaussian 
 double get_random(double min, double max);						// get random uniform number
+
 double printMatrixR(vector<double> k);
 void   saveFileR(vector<double> vec, string save_name);
 
@@ -44,34 +50,47 @@ int main() {
 	
 	// ========================================= 
 	// Question 1
-	// vector<double> energies = returnClassicalDist(Tm);
-	// vector<double> sample = removeAutocorrelation(energies);
-	// string e_save = "classical/energies.dat";
-	// saveFileR(sample, e_save);
 
-	// string dist_type = "classical";
-	// expected(dist_type);
+	vector<double> energies = returnClassicalDist(Tm);
+	vector<double> sample = removeAutocorrelation(energies);
+	string e_save = "output/classical/energies.dat";
+	saveFileR(sample, e_save);
 
+	string dist_type = "classical";
+	vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 2
-	vector<double> energies = returnQuantumDist(Tm);
-	vector<double> sample = removeAutocorrelation(energies);
-	string e_save = "quantum/energies.dat";
-	saveFileR(sample, e_save);
 
-	string dist_type = "quantum";
-	expected(dist_type);
+	// vector<double> energies = returnQuantumDist(Tm);
+	// vector<double> sample = removeAutocorrelation(energies);
+	// string e_save = "output/quantum/energies.dat";
+	// saveFileR(sample, e_save);
 
+	// string dist_type = "quantum";
+	// vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 3
 
+	// vector<double> energies = returnArbitraryDist(Tm);
+	// vector<double> sample = removeAutocorrelation(energies);
+	// string e_save = "output/arbitrary/energies.dat";
+	// saveFileR(sample, e_save);
 
+	// string dist_type = "arbitrary";
+	// vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 4
 
+	// vector<double> energies = returnQuantum2DDist(Tm);
+	// vector<double> sample = removeAutocorrelation(energies);
+	// string e_save = "output/quantum2D/energies.dat";
+	// saveFileR(sample, e_save);
+
+	// string dist_type = "quantum2D";
+	// vector<double> exp = expected(dist_type);
 
 	// =========================================
 
@@ -196,8 +215,114 @@ vector<double> returnQuantumDist(double T) {
 		if (nprop < 0) {
 			nprop = 0;
 		}
+
 		Ecurr = energyQuantum(ncurr);
 		Eprop = energyQuantum(nprop);
+
+		// Metropolis-Hastings algorithm
+		if (Eprop < Ecurr) {
+			ncurr = nprop;
+			energies[i] = Eprop;
+			accept += 1;
+		} else {
+			acc_prob = exp(BETA*(Eprop-Ecurr));
+			double randn = get_random(0,1);
+			if (randn < acc_prob) {
+				ncurr = nprop;
+				energies[i] = Eprop;
+				accept += 1;
+			} else {
+				energies[i] = Ecurr;
+				reject += 1;
+			}
+		}
+
+	}
+	double accept_rate = ((double) accept)/ ((double) Ns);
+
+	cout<<accept_rate<<" steps accepted"<<endl;
+
+	return energies;
+}
+
+
+vector<double> returnArbitraryDist(double T) {
+
+	vector<double> energies(Ns,0);
+	int ncurr = 0;
+	int nprop;
+	int randint;
+	double Ecurr;
+	double Eprop;
+	double acc_prob;
+	double BETA = -1/(kb*T);	
+
+	// counters
+	int accept = 0;
+	int reject = 0;
+
+	for (int i=0; i<Ns; i++) {
+
+		randint = (rand() %3) - 1;
+		nprop = ncurr + randint;
+		if (nprop < 0) {
+			nprop = 0;
+		}
+
+		Ecurr = energyQuantum(ncurr);
+		Eprop = energyQuantum(nprop);
+
+		// Metropolis-Hastings algorithm
+		if (Eprop < Ecurr) {
+			ncurr = nprop;
+			energies[i] = Eprop;
+			accept += 1;
+		} else {
+			acc_prob = exp(BETA*(Eprop-Ecurr));
+			double randn = get_random(0,1);
+			if (randn < acc_prob) {
+				ncurr = nprop;
+				energies[i] = Eprop;
+				accept += 1;
+			} else {
+				energies[i] = Ecurr;
+				reject += 1;
+			}
+		}
+
+	}
+	double accept_rate = ((double) accept)/ ((double) Ns);
+
+	cout<<accept_rate<<" steps accepted"<<endl;
+
+	return energies;
+}
+
+
+vector<double> returnQuantum2DDist(double T) {
+
+	vector<double> energies(Ns,0);
+	vector<int> ncurr = {0,0};
+	vector<int> nprop;
+	vector<int> randvec;
+	double Ecurr;
+	double Eprop;
+	double acc_prob;
+	double BETA = -1/(kb*T);	
+
+	// counters
+	int accept = 0;
+	int reject = 0;
+
+	for (int i=0; i<Ns; i++) {
+
+		randvec = {(rand() %3) - 1, (rand() %3) - 1};
+		nprop = {ncurr[0] + randvec[0], ncurr[1] + randvec[1]};
+		if (nprop[0] < 0) {nprop[0] = 0;
+		} else if (nprop[1] < 0) {nprop[1] = 0;}
+
+		Ecurr = energyQuantum2D(ncurr[0], ncurr[1]);
+		Eprop = energyQuantum2D(nprop[0], nprop[1]);
 
 		// Metropolis-Hastings algorithm
 		if (Eprop < Ecurr) {
@@ -267,6 +392,10 @@ vector<double> expected(string dist_type) {
 			dist  = returnClassicalDist(t);
 		} else if (dist_type == "quantum") {
 			dist  = returnQuantumDist(t);
+		} else if (dist_type == "arbitrary") {
+			dist  = returnArbitraryDist(t);
+		} else if (dist_type == "quantum2D") {
+			dist  = returnQuantum2DDist(t);
 		} else {
 			cout<<dist_type<<" not a valid distribution"<<endl;
 		}
@@ -278,8 +407,8 @@ vector<double> expected(string dist_type) {
 		// cout<<t<<": "<<error[0]<<" +/- "<<error[1]<<endl;
 	}
 
-	string save_eng = dist_type + "/expected_energy.dat";
-	string save_err = dist_type + "/expected_error.dat";
+	string save_eng = "output/" + dist_type + "/expected_energy.dat";
+	string save_err = "output/" + dist_type + "/expected_error.dat";
 	saveFileR(eng_exp, save_eng);
 	saveFileR(err_exp, save_err);
 }
