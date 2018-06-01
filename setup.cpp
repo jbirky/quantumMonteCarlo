@@ -26,7 +26,7 @@ double  kb  = 1;				// Boltzmann constant
 int     Tm  = 100;				// Tempertature max of expected plot
 
 // MCMC parameters
-int		Ns = pow(10,6);			// Number of steps
+int		Ns = pow(10,8);			// Number of steps
 int		Nw = 1; 				// Number of walkers
 int		Nburn = 10000;			// Burn in 
 int 	Nskip = 1000; 			// Number steps skipped per iteration

@@ -51,24 +51,24 @@ int main() {
 	// ========================================= 
 	// Question 1
 
-	vector<double> energies = returnClassicalDist(Tm);
-	vector<double> sample = removeAutocorrelation(energies);
-	string e_save = "output/classical/energies.dat";
-	saveFileR(sample, e_save);
+	// vector<double> energies = returnClassicalDist(Tm);
+	// vector<double> sample = removeAutocorrelation(energies);
+	// string e_save = "output/classical/energies.dat";
+	// saveFileR(sample, e_save);
 
-	string dist_type = "classical";
-	vector<double> exp = expected(dist_type);
+	// string dist_type = "classical";
+	// vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 2
 
-	// vector<double> energies = returnQuantumDist(Tm);
-	// vector<double> sample = removeAutocorrelation(energies);
-	// string e_save = "output/quantum/energies.dat";
-	// saveFileR(sample, e_save);
+	vector<double> energies = returnQuantumDist(Tm);
+	vector<double> sample = removeAutocorrelation(energies);
+	string e_save = "output/quantum/energies.dat";
+	saveFileR(sample, e_save);
 
-	// string dist_type = "quantum";
-	// vector<double> exp = expected(dist_type);
+	string dist_type = "quantum";
+	vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 3
@@ -109,7 +109,7 @@ int main() {
 
 double energyClassical(vector<double> vec) {
 
-	double energy = m/2 * pow((vec[3]-vec[2]), 2) + m*pow(w,2)/2 * pow((vec[0]+vec[1])/2, 2);
+	double energy = m/2 * (pow(vec[3],2) + pow(vec[2], 2)) + m*pow(w,2)/2 * (pow(vec[0],2) + pow(vec[1], 2));
 
 	return energy;
 }
@@ -212,9 +212,9 @@ vector<double> returnQuantumDist(double T) {
 
 		randint = (rand() %3) - 1;
 		nprop = ncurr + randint;
-		if (nprop < 0) {
-			nprop = 0;
-		}
+
+		// make sure proposed energy levels don't go below ground state
+		if (nprop < 0) {nprop = 0;}
 
 		Ecurr = energyQuantum(ncurr);
 		Eprop = energyQuantum(nprop);
@@ -265,9 +265,9 @@ vector<double> returnArbitraryDist(double T) {
 
 		randint = (rand() %3) - 1;
 		nprop = ncurr + randint;
-		if (nprop < 0) {
-			nprop = 0;
-		}
+
+		// make sure proposed energy levels don't go below ground state
+		if (nprop < 0) {nprop = 0;}
 
 		Ecurr = energyQuantum(ncurr);
 		Eprop = energyQuantum(nprop);
@@ -318,8 +318,10 @@ vector<double> returnQuantum2DDist(double T) {
 
 		randvec = {(rand() %3) - 1, (rand() %3) - 1};
 		nprop = {ncurr[0] + randvec[0], ncurr[1] + randvec[1]};
-		if (nprop[0] < 0) {nprop[0] = 0;
-		} else if (nprop[1] < 0) {nprop[1] = 0;}
+
+		// make sure proposed energy levels don't go below ground state
+		if (nprop[0] < 0) {nprop[0] = 0;} 
+		if (nprop[1] < 0) {nprop[1] = 0;}
 
 		Ecurr = energyQuantum2D(ncurr[0], ncurr[1]);
 		Eprop = energyQuantum2D(nprop[0], nprop[1]);
