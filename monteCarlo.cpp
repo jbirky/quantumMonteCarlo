@@ -62,24 +62,24 @@ int main() {
 	// ========================================= 
 	// Question 2
 
-	vector<double> energies = returnQuantumDist(Tm);
-	vector<double> sample = removeAutocorrelation(energies);
-	string e_save = "output/quantum/energies.dat";
-	saveFileR(sample, e_save);
+	// vector<double> energies = returnQuantumDist(Tm);
+	// vector<double> sample = removeAutocorrelation(energies);
+	// string e_save = "output/quantum/energies.dat";
+	// saveFileR(sample, e_save);
 
-	string dist_type = "quantum";
-	vector<double> exp = expected(dist_type);
+	// string dist_type = "quantum";
+	// vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 3
 
-	// vector<double> energies = returnArbitraryDist(Tm);
-	// vector<double> sample = removeAutocorrelation(energies);
-	// string e_save = "output/arbitrary/energies.dat";
-	// saveFileR(sample, e_save);
+	vector<double> energies = returnArbitraryDist(Tm);
+	vector<double> sample = removeAutocorrelation(energies);
+	string e_save = "output/arbitrary/energies.dat";
+	saveFileR(sample, e_save);
 
-	// string dist_type = "arbitrary";
-	// vector<double> exp = expected(dist_type);
+	string dist_type = "arbitrary";
+	vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 4
@@ -269,8 +269,8 @@ vector<double> returnArbitraryDist(double T) {
 		// make sure proposed energy levels don't go below ground state
 		if (nprop < 0) {nprop = 0;}
 
-		Ecurr = energyQuantum(ncurr);
-		Eprop = energyQuantum(nprop);
+		Ecurr = energyArbitrary(ncurr);
+		Eprop = energyArbitrary(nprop);
 
 		// Metropolis-Hastings algorithm
 		if (Eprop < Ecurr) {

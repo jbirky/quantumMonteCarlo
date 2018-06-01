@@ -1,3 +1,7 @@
+### Description
+
+Simulate classical and quantum particles in a harmonic oscillator potential using Markov Chain Monte Carlo!
+
 ### Usage
 
 Compute expected energies at given temperatures:

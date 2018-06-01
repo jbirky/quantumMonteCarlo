@@ -81,11 +81,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT ../output/classical/expected.png
-INPUT ../output/classical/expected.png
 OUTPUT writeup.pdf
-INPUT ../output/classical/expected.png
 INPUT /usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map
+INPUT ../output/classical/expected.png
+INPUT ../output/classical/expected.png
+INPUT ../output/classical/expected.png
 INPUT ../output/classical/walkers.png
 INPUT ../output/classical/walkers.png
 INPUT ../output/classical/walkers.png

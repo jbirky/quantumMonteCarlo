@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1527822289 "writeup.tex" "writeup.pdf" "writeup" 1527822291
-  "../output/arbitrary/expected.png" 1527811312 50962 79029f63389f70e90586b910c6f15956 ""
-  "../output/arbitrary/expected_sq.png" 1527818696 35318 e28e630040cac44b44c979d7f87db7c7 ""
-  "../output/arbitrary/walkers.png" 1527808125 68956 f67fc5ebd31306365db46cebfd69104a ""
+["pdflatex"] 1527837509 "writeup.tex" "writeup.pdf" "writeup" 1527837510
+  "../output/arbitrary/expected.png" 1527837474 60763 bb4ff725cb90577cad6e5a1f8ec6d58e ""
+  "../output/arbitrary/expected_sq.png" 1527837504 30888 f10a6050727118fa638db8819746e9d9 ""
+  "../output/arbitrary/walkers.png" 1527837484 46562 f8d57e39680ae1f38db3533beaaf596a ""
   "../output/classical/expected.png" 1527818687 66560 39d985c7031fa422098d11eb5ca625c5 ""
   "../output/classical/expected_sq.png" 1527818665 38590 0a883b552beff4c775e8ed66ef7c00da ""
   "../output/classical/walkers.png" 1527815831 67301 62708ab96a452c0998802a69706af14a ""
@@ -65,9 +65,9 @@
   "/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty" 1463608860 22417 1d9df1eb66848aa31b18a593099cf45c ""
   "/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1463002160 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1501961251 31949 3ae02a131d161fd383f5b89f8ad0930c ""
-  "writeup.aux" 1527822291 8 a94a2480d3289e625eea47cd1b285758 ""
-  "writeup.tex" 1527822289 7900 2128d872c752f8bb27ad50cee796f5de ""
+  "writeup.aux" 1527837510 8 a94a2480d3289e625eea47cd1b285758 ""
+  "writeup.tex" 1527836682 12356 361b33a2fa33fa804c3d3618f8d4cadf ""
   (generated)
-  "writeup.pdf"
   "writeup.log"
+  "writeup.pdf"
   "writeup.aux"
