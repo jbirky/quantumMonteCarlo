@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1527837509 "writeup.tex" "writeup.pdf" "writeup" 1527837510
+["pdflatex"] 1527837649 "writeup.tex" "writeup.pdf" "writeup" 1527837650
   "../output/arbitrary/expected.png" 1527837474 60763 bb4ff725cb90577cad6e5a1f8ec6d58e ""
   "../output/arbitrary/expected_sq.png" 1527837504 30888 f10a6050727118fa638db8819746e9d9 ""
   "../output/arbitrary/walkers.png" 1527837484 46562 f8d57e39680ae1f38db3533beaaf596a ""
@@ -65,8 +65,8 @@
   "/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty" 1463608860 22417 1d9df1eb66848aa31b18a593099cf45c ""
   "/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1463002160 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1501961251 31949 3ae02a131d161fd383f5b89f8ad0930c ""
-  "writeup.aux" 1527837510 8 a94a2480d3289e625eea47cd1b285758 ""
-  "writeup.tex" 1527836682 12356 361b33a2fa33fa804c3d3618f8d4cadf ""
+  "writeup.aux" 1527837650 8 a94a2480d3289e625eea47cd1b285758 ""
+  "writeup.tex" 1527837646 12356 becdc49d955544591ac4a3db46cba8d0 ""
   (generated)
   "writeup.log"
   "writeup.pdf"

@@ -51,24 +51,24 @@ int main() {
 	// ========================================= 
 	// Question 1
 
-	// vector<double> energies = returnClassicalDist(Tm);
-	// vector<double> sample = removeAutocorrelation(energies);
-	// string e_save = "output/classical/energies.dat";
-	// saveFileR(sample, e_save);
+	vector<double> energies = returnClassicalDist(Tm);
+	vector<double> sample = removeAutocorrelation(energies);
+	string e_save = "output/classical/energies.dat";
+	saveFileR(sample, e_save);
 
-	// string dist_type = "classical";
-	// vector<double> exp = expected(dist_type);
+	string dist_type = "classical";
+	vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 2
 
-	// vector<double> energies = returnQuantumDist(Tm);
-	// vector<double> sample = removeAutocorrelation(energies);
-	// string e_save = "output/quantum/energies.dat";
-	// saveFileR(sample, e_save);
+	vector<double> energies = returnQuantumDist(Tm);
+	vector<double> sample = removeAutocorrelation(energies);
+	string e_save = "output/quantum/energies.dat";
+	saveFileR(sample, e_save);
 
-	// string dist_type = "quantum";
-	// vector<double> exp = expected(dist_type);
+	string dist_type = "quantum";
+	vector<double> exp = expected(dist_type);
 
 	// ========================================= 
 	// Question 3
@@ -84,13 +84,13 @@ int main() {
 	// ========================================= 
 	// Question 4
 
-	// vector<double> energies = returnQuantum2DDist(Tm);
-	// vector<double> sample = removeAutocorrelation(energies);
-	// string e_save = "output/quantum2D/energies.dat";
-	// saveFileR(sample, e_save);
+	vector<double> energies = returnQuantum2DDist(Tm);
+	vector<double> sample = removeAutocorrelation(energies);
+	string e_save = "output/quantum2D/energies.dat";
+	saveFileR(sample, e_save);
 
-	// string dist_type = "quantum2D";
-	// vector<double> exp = expected(dist_type);
+	string dist_type = "quantum2D";
+	vector<double> exp = expected(dist_type);
 
 	// =========================================
 
